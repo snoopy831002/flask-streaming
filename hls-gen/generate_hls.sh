@@ -8,7 +8,7 @@ cd $1
 
 
 # Start running FFmpeg HLS Live streaming
-python hls-generator.py | ffmpeg  \
+python3 hls-generator.py | ffmpeg  \
   -f rawvideo \
   -pixel_format bgr24 \
   -framerate 10 \

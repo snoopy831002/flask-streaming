@@ -23,8 +23,8 @@ while(True):
     # height, width, channels = frame.shape
     # print height, width, channels
 
-    framestring = frame.tostring()
-    sys.stdout.write(framestring)
+    framestring = frame.tobytes()
+    sys.stdout.buffer.write(framestring)
 
     # Display the resulting frame
     cv2.imshow('frame', frame)
