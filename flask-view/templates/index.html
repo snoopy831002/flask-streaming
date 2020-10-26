@@ -1,19 +1,453 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="utf-8">
-      <title>Test</title>
-      <link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
-   </head>
-   <body>
-      <video id="player" class="video-js vjs-default-skin" controls preload>
-         <source src="/video/playlist.m3u8" type="application/x-mpegURL">
-      </video>
-      <script src="http://vjs.zencdn.net/6.2.8/video.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.12.2/videojs-contrib-hls.min.js"></script>
-      <script>
-          var player = videojs('player', {width: 350, height: 200});
-          player.play();
-     </script>
-   </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Album example · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/dist/css/bootstrap.css')}}">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+
+
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/album.css')}}">
+  </head>
+  <body>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <strong>你播，我看</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-6 shadow-sm">
+              <div class="card-body" style="height:350px">
+                  <video id="player" class="video-js vjs-default-skin" controls preload>
+                    <source src="/video/playlist.m3u8" type="application/x-mpegURL">
+                  </video>
+                  <script src="http://vjs.zencdn.net/6.2.8/video.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.12.2/videojs-contrib-hls.min.js"></script>
+                  <script>
+                    var player = videojs('player', {width: 405, height: 300});
+                    player.play();
+                  </script>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-6 shadow-sm">
+              <div class="card-body">
+                <div class="container">
+                 <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-comment"></span> Chat
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                                    </span>Refresh</a></li>
+                                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                                    </span>Available</a></li>
+                                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                                    </span>Busy</a></li>
+                                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                        Away</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                        Sign Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="chat" id="chat">
+
+
+
+
+
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+      <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+  </footer>
+     <script type="text/javascript">
+  function codeAddress() {
+       var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/55C1E7/fff&text=U" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "大叔"
+       div2.appendChild(small);
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "hihih 有點可愛～～這隻到底是什麼 哈哈哈哈 有名字嗎 "
+       div2.appendChild(p);
+        }
+        window.onload = codeAddress;
+
+        //////////
+
+        function codeAddress2() {
+       var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/56C1E7/fff&text=LT" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "阿咪咪"
+       div2.appendChild(small);
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "有點可愛～～"
+       div2.appendChild(p);
+        }
+        setTimeout(codeAddress2, 4000);
+
+        ////////////
+
+                function codeAddress3() {
+       var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/d5C1E7/fff&text=CC" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "青青"
+       div2.appendChild(small);
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "好喜歡這隻！！希望我家也有一隻"
+       div2.appendChild(p);
+        }
+        setTimeout(codeAddress3, 3000);
+
+        /////////////
+
+                function codeAddress5() {
+       var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/37C197/fff&text=KT" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "迷迷"
+       div2.appendChild(small);
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "這到底是？！"
+       div2.appendChild(p);
+        }
+        setTimeout(codeAddress4, 4500);
+
+        /////////////
+
+         function codeAddress4() {
+       var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/37C197/fff&text=KT" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "迷迷"
+       div2.appendChild(small);
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "可以抖內嗎"
+       div2.appendChild(p);
+        }
+        setTimeout(codeAddress5, 6600);
+
+        /////////////
+        </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="{{ url_for('static',filename='assets/dist/js/bootstrap.bundle.js')}}"></body>
+
 </html>
