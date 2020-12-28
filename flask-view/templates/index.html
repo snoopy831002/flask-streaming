@@ -154,7 +154,7 @@
                  <div class="row">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <span class="glyphicon glyphicon-comment"></span> Chat
+                            <span class="glyphicon glyphicon-comment"></span> 酪梨妹，跟觀眾 Say Hello ~
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-chevron-down"></span>
@@ -187,7 +187,7 @@
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    <button onclick="enter()" class="btn btn-warning btn-sm" id="btn-chat">
                                         Send</button>
                                 </span>
                             </div>
@@ -247,6 +247,11 @@
        strong.innerHTML = "大叔"
        div2.appendChild(small);
 
+        var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       small.appendChild(sspan);
+
+
        var span2 = document.createElement('small');
        span2.className = 'pull-right text-muted';
        small.appendChild(span2);
@@ -254,8 +259,64 @@
               var p = document.createElement('p');
               p.innerHTML = "hihih 有點可愛～～這隻到底是什麼 哈哈哈哈 有名字嗎 "
        div2.appendChild(p);
+
+                document.addEventListener('click',function(e){
+    if(e.target && e.target.class== 'glyphicon glyphicon-thumbs-up'){
+          alert("ergg");
+     }
+ });
         }
         window.onload = codeAddress;
+
+        function enter(){
+            var li = document.createElement('li');
+       li.className = 'left clearfix';
+       document.getElementById("chat").appendChild(li);
+
+       var span = document.createElement('span');
+       span.className = 'chat-img pull-left';
+       li.appendChild(span);
+
+       var img = document.createElement('img');
+       img.src = "http://placehold.it/50/93F147/fff&text=AC" ;
+       img.alt = "User Avatar";
+       img.className = "img-circle";
+       span.appendChild(img);
+
+//////
+
+       var div = document.createElement('div');
+       div.className = 'chat-body clearfix';
+       li.appendChild(div);
+
+       var div2 = document.createElement('div');
+       div2.className = 'header';
+       div.appendChild(div2);
+
+ var strong = document.createElement('strong');
+       strong.className = 'primary-font';
+       strong.innerHTML = "aaaaa"
+       div2.appendChild(strong);
+
+        var small = document.createElement('strong');
+       small.className = 'pull-right text-muted';
+       strong.innerHTML = "酪梨妹"
+       div2.appendChild(small);
+
+       var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       small.appendChild(sspan);
+
+
+
+       var span2 = document.createElement('small');
+       span2.className = 'pull-right text-muted';
+       small.appendChild(span2);
+
+              var p = document.createElement('p');
+              p.innerHTML = "謝謝大家愛我～"
+       div2.appendChild(p);
+        }
 
         //////////
 
@@ -294,6 +355,12 @@
        strong.innerHTML = "阿咪咪"
        div2.appendChild(small);
 
+        var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       sspan.onclick = 'up(this)';
+       small.appendChild(sspan);
+
+
        var span2 = document.createElement('small');
        span2.className = 'pull-right text-muted';
        small.appendChild(span2);
@@ -302,7 +369,7 @@
               p.innerHTML = "有點可愛～～"
        div2.appendChild(p);
         }
-        setTimeout(codeAddress2, 4000);
+        setTimeout(codeAddress2, 2600);
 
         ////////////
 
@@ -341,6 +408,12 @@
        strong.innerHTML = "青青"
        div2.appendChild(small);
 
+        var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       sspan.onclick = 'up(this)';
+       small.appendChild(sspan);
+
+
        var span2 = document.createElement('small');
        span2.className = 'pull-right text-muted';
        small.appendChild(span2);
@@ -349,7 +422,7 @@
               p.innerHTML = "好喜歡這隻！！希望我家也有一隻"
        div2.appendChild(p);
         }
-        setTimeout(codeAddress3, 3000);
+        setTimeout(codeAddress3, 3800);
 
         /////////////
 
@@ -388,6 +461,12 @@
        strong.innerHTML = "迷迷"
        div2.appendChild(small);
 
+        var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       sspan.onclick = 'up(this)';
+       small.appendChild(sspan);
+
+
        var span2 = document.createElement('small');
        span2.className = 'pull-right text-muted';
        small.appendChild(span2);
@@ -396,7 +475,7 @@
               p.innerHTML = "這到底是？！"
        div2.appendChild(p);
         }
-        setTimeout(codeAddress4, 4500);
+        setTimeout(codeAddress4, 5700);
 
         /////////////
 
@@ -435,6 +514,12 @@
        strong.innerHTML = "迷迷"
        div2.appendChild(small);
 
+        var sspan = document.createElement('span');
+       sspan.className = 'glyphicon glyphicon-thumbs-up';
+       sspan.onClick = 'up(this)';
+       small.appendChild(sspan);
+
+
        var span2 = document.createElement('small');
        span2.className = 'pull-right text-muted';
        small.appendChild(span2);
@@ -443,7 +528,12 @@
               p.innerHTML = "可以抖內嗎"
        div2.appendChild(p);
         }
-        setTimeout(codeAddress5, 6600);
+        setTimeout(codeAddress5, 7900);
+
+        function up(t){
+            alert(t);
+            //t.style.color = "purple";
+        }
 
         /////////////
         </script>
